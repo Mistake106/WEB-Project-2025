@@ -1,0 +1,50 @@
+/*Colors ->    Green: #7ecd5a, Faded Green: #b5c399, #Yellow: f3ff06, #Red: cd0e0e     */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: #B5C399;
+    display: flex;
+}
+
+/*TOP NAVIGATION MENU========================================================================*/
+
+#top_menu{
+    display: flex;
+    justify-content: space-between;
+    background-color: #7ECD5A;
+    color: white;
+    width: 100%;
+    padding: 15px 5px;
+}
+.Home_Button{
+    color: white;
+    text-decoration: none;
+    padding-left: 10px;
+    font-family: "Arial Black", Impact, sans-serif;
+    font-size: 30pt;
+}
+#Right_Side{
+    display: inline-block;
+    list-style: none;
+}
+#Right_Side li{
+    display: inline-block;
+    height: 100%;
+    line-height: 100%;
+    margin-left: 10px;
+}
+#Right_Side li a{
+    text-decoration: none;
+    display: block;
+    height: 100%;
+    width: 100%;
+    color: white;
+    font-size: 18pt;
+    line-height: 100%;
+    align-content: center;
+}
+/*TOP NAVIGATION MENU========================================================================*/
