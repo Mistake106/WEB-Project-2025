@@ -9,13 +9,19 @@
         <nav id="top_menu">
             <a href="main_page.html" class="Home_Button" >ASSIGNBET</a>
             <ul id="Right_Side">
-                <li><a href="" >0,00€</a></li>
-                <li><a href=""  style="color: #f3ff06">Login</a></li>
+                <li>0,00€</li>
+                <li><button type="button">Add Funds</button></li>
+                <li><button type="button" id="Open_Login_Popup">Login</button>
+                    <div id="Login_Popup" class="popup">
+                        <h3>Login</h3>
+
+                        <button type="button" id="Close_Login_Button">Cancel</button>
+                    </div>
+                </li>
                 <li><a href="create_account.html" >Register</a></li>
             </ul>
         </nav>
-        <aside id="side_menu">
-
-        </aside>
+        
+        <script src="js/main_page.js"></script>
     </body>
 </html>
