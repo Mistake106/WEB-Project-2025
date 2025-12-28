@@ -11,16 +11,23 @@
             <ul id="Right_Side">
                 <li>0,00€</li>
                 <li><button type="button">Add Funds</button></li>
-                <li><button type="button" id="Open_Login_Popup">Login</button>
-                    <div id="Login_Popup" class="popup">
-                        <h3>Login</h3>
-
-                        <button type="button" id="Close_Login_Button">Cancel</button>
-                    </div>
-                </li>
+                <li><button type="button" id="Open_Login_Popup">Login</button></li>
                 <li><a href="create_account.html" >Register</a></li>
             </ul>
         </nav>
+        <div id="overlay">
+            <div id="Login_Popup" class="popup">
+                <form action="" method="post">
+                    <label for="e-mail">E-mail:</label><br>
+                    <input type="email" name="e-mail" id="e-mail" required><br>
+                    <label for="pass">Password:</label><br>
+                    <input type="password"name="pass" id="pass" required><br><br>
+
+                    <input type="submit" value="Login">
+                </form>
+                <a href="">Forgotten password?</a>
+            </div>
+        </div>
         
         <script src="js/main_page.js"></script>
     </body>
