@@ -16,7 +16,10 @@
                 <li><a href="create_account.html" >Register</a></li>
             </ul>
         </nav>
-        <div id="Sidebar">
+        
+
+        <div id="Page_Layout">
+            <div id="Sidebar">
                 <h3>Offers</h3>
                 <div id="Sidebar_Offers">
                     <a href="">
@@ -86,10 +89,8 @@
                 </div>
             </div>
         </div>
-
-        <div id="Page_Layout">
             <div id="Main_Content">
-                <img src="img/" alt="">
+                <img src="" alt="">
                 <h1>Welcome to ASSIGNBET</h1><br>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sodales, lectus sed sollicitudin fermentum, ante lacus egestas velit, eget sodales mi lectus vitae leo. Fusce ex tortor, sagittis eu ipsum ultrices, facilisis blandit sem. Mauris sit amet urna congue, blandit orci sed, sollicitudin mauris. Quisque tincidunt non odio ac aliquet. Donec varius tristique mi eget ultricies. Proin ipsum leo, hendrerit vitae ullamcorper non, dapibus in turpis. Ut tristique et dui vitae gravida. Pellentesque et mollis erat, quis porta nulla. Nunc et interdum est. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi pharetra accumsan molestie. Proin hendrerit massa ut mi vulputate, a vestibulum lorem mollis. Integer vitae lorem quis orci faucibus placerat. Vestibulum tristique porttitor tellus.
 
@@ -125,15 +126,24 @@ Quisque congue ipsum ligula, non gravida purus viverra eget. Pellentesque venena
 
         <div id="overlay">
             <div id="Login_Popup" class="popup">
-                <form action="" method="post">
+                <img src="img/guy-1024x1024.jpg" alt="casino_table_man.jpg">
+                <form id="Login_Form" action="" method="post">
                     <label for="e-mail">E-mail:</label><br>
                     <input type="email" name="e-mail" id="e-mail" required><br>
+                    <span id="Email_Error" class="error"></span><br>
+
                     <label for="pass">Password:</label><br>
                     <input type="password"name="pass" id="pass" required><br><br>
 
-                    <input type="submit" value="Login">
+                    <input type="checkbox" name="remember" id="remember" value="Remember_me">
+                    <label for="remember">Remember me?</label><br>
+                    
+                    
+
+                    <input type="submit" value="Login" id="Submit_Button"><br>
+                    <a href="forgotten_password.html">Forgotten password?</a>
                 </form>
-                <a href="">Forgotten password?</a>
+                
             </div>
         </div>
         
