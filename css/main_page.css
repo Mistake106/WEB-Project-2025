@@ -1,4 +1,12 @@
 /*Colors ->    Green: #4f8d32, Faded Green: #b5c399, #Yellow: f3ff06, #Red: cd0e0e     */
+:root {
+  --top-menu-height: 90px;
+}
+@media  only screen and (max-width: 615px){
+    :root{
+        --top-menu-height: 65px;
+    }
+}
 *{
     color: white;
     margin: 0;
@@ -20,6 +28,9 @@ button:hover{
     background-color: #f3ff06;
     border: 2px solid green;
 }
+button:hover *{
+    color: green;
+}
 *::selection {
   background: #f3ff06;
   color: green;
@@ -28,10 +39,19 @@ button:hover{
   background: #f3ff06;
   color: green;
 }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
 body{
     min-width: 320px;
     min-height: 256px;
     background-color: #8b9277;
+    overflow-x: hidden;
 }
 input{
     color: green;
@@ -46,12 +66,16 @@ input{
     justify-content: space-between;
     background-image:linear-gradient(to bottom right, #4f8d32, #3d7523);
     top: 0;
-    height: 90px;
+    height: var(--top-menu-height);
     width: 100%;
     padding: 15px;
     border-bottom: 4px ridge green;
+    z-index: 999;
 }
-.Home_Button{
+#Home_Button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #f3ff06; 
     text-decoration: none;
     padding-left: 10px;
@@ -59,28 +83,31 @@ input{
     font-size: 30pt;
 }
 #Right_Side{
-    padding-right: 50px;
-    display: inline-block;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     list-style: none;
 }
+#Right_Side *{
+    font-size: 18pt;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 #Right_Side li{
-    display: inline-block;
     height: 100%;
     line-height: 100%;
     margin-left: 10px;
-    font-size: 18pt;
 }
 #Right_Side li a{
     text-decoration: none;
     border: 2px solid white;
     border-radius: 25px;
-    display: block;
-    height: 100%;
-    width: 100%;
-    
     background-color: green;
     padding: 2px 5px;
-    font-size: 18pt;
+    display: block;
     text-align: center;
     line-height: 100%;
     align-content: center;
@@ -92,86 +119,39 @@ input{
     background-color: #f3ff06;
     border-radius: 25px;
     display: block;
-    height: 100%;
-    width: 100%;
     padding: 2px 5px;
-    font-size: 18pt;
-    text-align: center;
     line-height: 100%;
-    align-content: center;
 }
 #Right_Side li button{
     text-decoration: none;
-    display: inline-block;
     border-radius: 25px;
-    height: 100%;
-    width: 100%;
     padding: 2px 3px;
     line-height: 100%;
-    font-size: 18pt;
     align-content: center;
 }
 #Right_Side li button:hover{
     text-decoration: none;
-    display: inline-block;
     border-radius: 25px;
-    height: 100%;
-    width: 100%;
     padding: 2px 3px;
     line-height: 100%;
-    font-size: 18pt;
+
     align-content: center;
 }
 
-/*LOGIN POPUP========================================================================*/
-#Login_Popup{
-    border: 3px solid #f3ff06;
-    min-height: 200px;
-    max-width: 400px;
-    width: 90%;
-    border-radius: 5px;
-    background-image:linear-gradient(to bottom right, #4f8d32, #3d7523);
-    text-align: center;
+@media  only screen and (max-width: 615px){
+    #Home_Button{
+        font-size: 20pt;
+    }
 }
-#Login_Popup img{
-    width: 100%;
+@media only screen and (max-width: 750px){
+    #Right_Side *{
+        height: 40px;
+        font-size: 10pt;
+    }
+
 }
-#Login_Popup form{
-    padding: 20px 0px;
-}
-#Login_Popup form > *{
-    font-size: larger;
-    padding: 20px 0px;
-}
-#Login_Popup form input{
-    margin-top: 3px;
-    padding: 5px 2px;
-    text-align: center;
-    background-color: #b5c399;
-    border: none;
-    border-radius: 25px;
-}
-#remember{
-    min-width: none;
-}
-#Email_Error{
-    color: #f3ff06;
-    padding: 0 !important;
-}
-#Login_Popup form #Submit_Button{
-    cursor: pointer;
-    background-color: #cd0e0e;
-    color: white;
-    border: 2px solid white;
-    padding: 10px 20px;
-    margin: 20px 0px;
-}
-#Login_Popup form #Submit_Button:hover{
-    cursor: pointer;
-    color: green;
-    background-color: #f3ff06;
-    border: 2px solid green;
-}
+
+/*==== POPUP OVERLAY ========================================================================*/
 #overlay {
     position: fixed;
     top: 0;
@@ -184,25 +164,120 @@ input{
     justify-content: center;
     z-index: 1000;
 }
-/*=====*/
+.popup{
+    display: none;
+    border: 3px solid #f3ff06;
+    min-height: 200px;
+    max-width: 400px;
+    width: 90%;
+    border-radius: 5px;
+    background-image:linear-gradient(to bottom right, #4f8d32, #3d7523);
+    text-align: center;
+}
+.popup img{
+    width: 100%;
+}
+.popup form{
+    padding: 20px 0px;
+}
+.popup form > *{
+    font-size: larger;
+    padding: 20px 0px;
+}
+.popup form input{
+    margin-top: 3px;
+    padding: 5px 2px;
+    text-align: center;
+    background-color: #b5c399;
+    border: none;
+    border-radius: 25px;
+}
+.popup form input[type=submit],
+.popup form input[type=button] {
+    cursor: pointer;
+    background-color: #cd0e0e;
+    color: white;
+    border: 2px solid white;
+    padding: 10px 20px;
+    margin: 20px 10px;
+}
+
+.popup form input[type=submit]:hover,
+.popup form input[type=button]:hover {
+    color: green;
+    background-color: #f3ff06;
+    border: 2px solid green;
+}
+#Email_Error{
+    color: #f3ff06;
+    padding: 0 !important;
+}
+#Add_Funds_Popup{
+    background-image:url("../img/vault-1024x1024.jpg");
+    background-blend-mode: normal;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#Add_Funds_Popup label{
+    font-weight: bold;
+    color: #f3ff06;
+    text-shadow: 2px 0px black;
+}
+#cvv{
+    width: 50px;
+}
+#expiry_date{
+    width: 100px;
+}
+#amount{
+    width: 150px;
+    background-color: #4f8d32;
+    color: #f3ff06;
+    border: 2px solid yellow;
+}
+
+/*== Elements under top nav bar ===*/
 #Page_Layout{
-    margin-top: 90px;
+    margin-top: var(--top-menu-height);
     display: flex;
     width: 100%;
 }
+/*=== Main Content ==================================================================================================================*/
 #Main_Content{
-    border: 3px solid magenta;
-    margin-right: 25%;
-    width: 80%;
+    margin-right: 300px;
+    margin-left: 15px;
+    margin-bottom: 40px;
+    transition: margin-right 0.15s ease-in-out 0s;
+
 }
-/*OFFER SIDEBAR======================================================================*/
+/*======= OFFER SIDEBAR ======================================================================*/
 #Sidebar{
     right: 0;
     position:fixed;
-    width: 20%;
-    min-width: 300px;
-    min-height: calc(100vh - 90px); /* viewport minus nav height */
+    width: 300px;
+    min-height: calc(100vh - var(--top-menu-height));
     background-image:linear-gradient(130deg, #4f8d32, #3d7523);
+
+    transition: width 0.15s ease-in-out 0s;
+    z-index: 998;
+}
+#Sidebar_Collapse_Button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 5px;
+    padding: 15px 20px;
+    height: 34px;
+    width: 30px;
+    position: fixed;
+    top: var(--top-menu-height);
+    right: 300px;
+    transition: right 0.15s ease-in-out 0s;
+}
+#Sidebar_Collapse_Button i{
+    font-size:x-large;
 }
 #Sidebar h3{
     padding: 5px 0px;
@@ -230,4 +305,89 @@ input{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+#Sidebar.stick-to-content {
+    position: absolute;
+    bottom: auto;
+}
+#Sidebar.collapsed {
+    width: 0 !important;
+    position: static !important;
+}
+@media only screen and (max-width: 750px) {
+    #Sidebar {
+        width: 0;
+    }
+
+    #Main_Content {
+        margin-right: 0;
+    }
+
+    #Sidebar_Collapse_Button {
+        right: 0;
+    }
+}
+
+/*======== FOOTER =============================================================================*/
+footer{
+    width: 100%;
+    height: fit-content;
+    border-top: 4px ridge green;
+    padding: 20px;
+
+    background-image:linear-gradient(130deg, #4f8d32, #3d7523);
+}
+.footer-columns{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: stretch;
+}
+.footer-nav{
+    height: max-content;
+    background-image:linear-gradient(130deg, #b5c399, #7ab45f);
+    padding: 10px;
+    margin-top: 15px;
+    margin-right: 15px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgb(1, 70, 1);
+}
+.footer-nav h4{
+    text-align: center;
+    margin-bottom: 5px;
+}
+.footer-nav ul{
+    list-style: none;
+}
+.footer-nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    padding: 2px 3px;
+}
+.footer-nav ul li a:hover{
+    background-color: #4f8d32;
+    border-radius: 3px;
+    opacity: 1!important;
+}
+
+.footer-nav i {
+  width: 1.1rem;
+  text-align: center;
+  opacity: 0.8;
+}
+.social-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+    justify-content: center;
+    text-decoration: none;
+}
+.fa-brands{
+    font-size:larger;
+}
+
+.social-links a {
+  font-size: 1.1rem;
 }
