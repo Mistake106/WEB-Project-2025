@@ -1,4 +1,4 @@
-/*Colors ->    Green: #4f8d32, Faded Green: #b5c399, #Yellow: f3ff06, #Red: cd0e0e     */
+/*Colors ->    Green: #4f8d32, Faded Green: #b5c399, #Yellow: f3ff06, #Red: cd0e0e*/
 :root {
   --top-menu-height: 90px;
 }
@@ -21,12 +21,15 @@ button{
     background-color: #cd0e0e;
     color: white;
     border: 2px solid white;
+    transition: background-color 0.25s linear 0s;
+    transition: color 0.07s linear 0s;
 }
 button:hover{
     cursor: pointer;
     color: green;
     background-color: #f3ff06;
     border: 2px solid green;
+    
 }
 button:hover *{
     color: green;
@@ -45,18 +48,35 @@ input[type="number"]::-webkit-outer-spin-button {
     margin: 0;
 }
 input[type="number"] {
+    appearance: textfield;
     -moz-appearance: textfield;
 }
+html, body{
+    height: 100%;
+    margin: 0;
+
+}
 body{
+    display: flex;
+    flex-direction: column;
     min-width: 320px;
     min-height: 256px;
     background-color: #8b9277;
     overflow-x: hidden;
+    background-image: url("../img/labyrinth_background.jpg");
+    background-repeat: repeat;
+    background-size: cover;
+}
+.checkbox-radio-container{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 input{
     color: green;
 }
-
 
 /*TOP NAVIGATION MENU========================================================================*/
 
@@ -111,6 +131,8 @@ input{
     text-align: center;
     line-height: 100%;
     align-content: center;
+    transition: background-color 0.25s linear 0s;
+    transition: color 0.07s linear 0s;
 }
 #Right_Side li a:hover{
     text-decoration: none;
@@ -152,6 +174,7 @@ input{
 }
 
 /*==== POPUP OVERLAY ========================================================================*/
+
 #overlay {
     position: fixed;
     top: 0;
@@ -177,6 +200,11 @@ input{
 .popup img{
     width: 100%;
 }
+@media  only screen and (max-height: 500px){
+    .popup img{
+        display: none;
+    }
+}
 .popup form{
     padding: 20px 0px;
 }
@@ -201,7 +229,6 @@ input{
     padding: 10px 20px;
     margin: 20px 10px;
 }
-
 .popup form input[type=submit]:hover,
 .popup form input[type=button]:hover {
     color: green;
@@ -237,19 +264,126 @@ input{
     border: 2px solid yellow;
 }
 
-/*== Elements under top nav bar ===*/
+/*===== CUSTOM SLIDER CHECKBOXES ===============================================*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  padding: 0!important;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #b5c399;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #4f8d32;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #4f8d32;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+.round {
+  border-radius: 34px;
+}
+.round:before {
+  border-radius: 50%;
+}
+/*== Elements under top nav bar =======================================================*/
 #Page_Layout{
     margin-top: var(--top-menu-height);
+    flex: 1;
     display: flex;
     width: 100%;
 }
 /*=== Main Content ==================================================================================================================*/
 #Main_Content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 90vh;
     margin-right: 300px;
     margin-left: 15px;
     margin-bottom: 40px;
     transition: margin-right 0.15s ease-in-out 0s;
+}
+#Main_Content h1{
+    margin: 20px 0px 20px 40px ;
+    text-shadow: 3px 2px #cd0e0e;
+}
+#Main_Content p{
+    margin-top: 30px;
+    margin-right: 15px;
+}
+.float-img-right{
+    height: auto;
+    float: right;
+    border-radius: 20px;
+    margin: 15px 0 15px 15px;
+    width: 50%;
+}
+.float-img-left{
+    height: auto;
+    float: left;
+    border-radius: 20px;
+    margin: 15px 15px 15px 0px;
+    width: 50%;
+}
+#odds-table {
+    width: 98%;
+    border-collapse:collapse;
+}
+#odds-table th,
+#odds-table td {
+    border: 1px solid white;
+    padding: 10px;
+    text-align: center;
+}
+#odds-table th {
+    background-color: green;
+    color: white;
+}
+#odds-table caption {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
 
+@media only screen and (max-width: 750px) {
+    #odds-table th,
+    #odds-table td {
+        padding: 3px;
+    }
 }
 /*======= OFFER SIDEBAR ======================================================================*/
 #Sidebar{
@@ -334,7 +468,6 @@ footer{
     height: fit-content;
     border-top: 4px ridge green;
     padding: 20px;
-
     background-image:linear-gradient(130deg, #4f8d32, #3d7523);
 }
 .footer-columns{
@@ -371,7 +504,6 @@ footer{
     border-radius: 3px;
     opacity: 1!important;
 }
-
 .footer-nav i {
   width: 1.1rem;
   text-align: center;
@@ -387,7 +519,6 @@ footer{
 .fa-brands{
     font-size:larger;
 }
-
 .social-links a {
   font-size: 1.1rem;
 }

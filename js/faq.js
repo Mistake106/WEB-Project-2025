@@ -114,65 +114,15 @@ function validateForm() {
         submitBtn.disabled = true;
     }
 }
-//==== Sidebar Collapse Button ======================================================================================================
-const sideToggleBtn = document.getElementById("Sidebar_Collapse_Button");
-const sideToggleBtnIcon = document.getElementById("Sidebar_Collapse_Button_Icon");
-const sidebar = document.getElementById("Sidebar");
-const mainCont = document.getElementById("Main_Content");
+//==== FAQ table ==========================================================================================================================
 
-sideToggleBtn.addEventListener("click", () => {
-  const width = getComputedStyle(sidebar).width;
-  if (width !== "0px"){
-    CollapseSidebar();
-  }
-  else{
-    sidebar.style.width = "300px";
-    mainCont.style.marginRight = "300px";
-    sideToggleBtn.style.right = "300px";
-    sideToggleBtnIcon.classList = "fa-solid fa-circle-right";
-  }
-  });
 
-  function CollapseSidebar() {
-    sidebar.style.width = "0px";
-    mainCont.style.marginRight = "0px";
-    sideToggleBtn.style.right = "0px";
-    sideToggleBtnIcon.classList = "fa-solid fa-circle-left";
-  }
-
-  function handleResponsiveSidebar() {
-  if (window.innerWidth <= 750) {
-    CollapseSidebar();
-  } else {
-    sidebar.style.width = "300px";
-    mainCont.style.marginRight = "300px";
-    sideToggleBtn.style.right = "300px";
-    sideToggleBtnIcon.classList = "fa-solid fa-circle-right";
-  }
-}
-
-window.addEventListener("resize", handleResponsiveSidebar);
-window.addEventListener("load", handleResponsiveSidebar);
-
-const footer = document.querySelector("footer");
-
-function handleSidebarFooterCollision() {
-    const sidebarHeight = sidebar.offsetHeight;
-    const footerTop = footer.offsetTop;
-    const scrollY = window.scrollY || window.pageYOffset;
-    const topMenuHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--top-menu-height"));
-
-    const stopScroll = footerTop - sidebarHeight - topMenuHeight;
-
-    if (scrollY >= stopScroll) {
-        sidebar.style.position = "absolute";
-        sidebar.style.top = stopScroll + topMenuHeight + "px";
-    } else {
-        sidebar.style.position = "fixed";
-        sidebar.style.top = topMenuHeight + "px";
-    }
-}
-window.addEventListener("scroll", handleSidebarFooterCollision);
-window.addEventListener("resize", handleSidebarFooterCollision);
-window.addEventListener("load", handleSidebarFooterCollision);
-
+    document.querySelectorAll(".faq-question").forEach(question => {
+        question.addEventListener("click", () => {
+            const answer = question.nextElementSibling;
+            answer.style.display =
+                answer.style.display === "table-row" ? "none" : "table-row";
+            answer.style.width = 
+                answer.style.width === "auto" ? "0" : "auto";
+        });
+    });

@@ -59,7 +59,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url("../img/green-repeating.jpg");
+    background-image: url("../img/labyrinth_background.jpg");
     background-position: center;
     background-repeat: repeat;
     background-size: 50%;
@@ -168,6 +168,44 @@ input{
 
 }
 
+/*====== FAQ TABLE ======================================================================================*/
+
+#FAQ_Content{
+    max-width: 900px;
+    margin: calc(var(--top-menu-height) + 40px) auto;
+    padding: 0 20px;
+    width: 100%;
+}
+.faq-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.faq-table td {
+    padding: 15px;
+    border: 1px solid white;
+}
+.faq-question {
+    background-color: #3d7523;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+.faq-question:hover,
+.faq-question:hover *{
+    background-color: #f3ff06;
+    color: green;
+}
+.faq-answer{
+    background-color: #b5c399;
+    width: 0;
+    display: none;
+    transition: height 0.25s ease-in 0s;
+}
+.faq-answer *{
+    font-style: italic;
+    color: #3d7523;
+}
+
 /*==== POPUP OVERLAY ========================================================================*/
 #overlay {
     position: fixed;
@@ -200,6 +238,7 @@ input{
         display: none;
     }
 }
+
 .popup form{
     padding: 20px 0px;
 }
@@ -318,90 +357,63 @@ input[type='radio'] {
     accent-color: green;
 }
 
-/*==== REGISTRATION FORM ============================================================================================*/
-
-#form-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: calc(var(--top-menu-height) + 15px);
-    width: 500px;
-    background-image:linear-gradient(to bottom right, #8bb578, #9bc08a);
-}
-#form-container > *{
-    font-size: larger;
+/*======== FOOTER =============================================================================*/
+footer{
     width: 100%;
+    height: fit-content;
+    border-top: 4px ridge green;
+    padding: 20px;
+    background-image:linear-gradient(130deg, #4f8d32, #3d7523);
 }
-#form-container #offer-banner{
-    height: 100px;
-    background-image: url("../img/chips-1024x1024.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.footer-columns{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: stretch;
 }
-#form-container #link-bar{
+.footer-nav{
+    height: max-content;
+    background-image:linear-gradient(130deg, #b5c399, #7ab45f);
+    padding: 10px;
+    margin-top: 15px;
+    margin-right: 15px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgb(1, 70, 1);
+}
+.footer-nav h4{
+    text-align: center;
+    margin-bottom: 5px;
+}
+.footer-nav ul{
+    list-style: none;
+}
+.footer-nav ul li a {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    height: 40px;
-    background-image:linear-gradient(to bottom right, #4f8d32, #3d7523);
-    padding: 3px 10px;
+    gap: 0.5rem;
+    text-decoration: none;
+    padding: 2px 3px;
 }
-#form-container form{
+.footer-nav ul li a:hover{
+    background-color: #4f8d32;
+    border-radius: 3px;
+    opacity: 1!important;
+}
+.footer-nav i {
+  width: 1.1rem;
+  text-align: center;
+  opacity: 0.8;
+}
+.social-links {
     display: flex;
-    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
     justify-content: center;
-    padding: 30px 30px;
+    text-decoration: none;
 }
-#form-container select{
-    width: 25%; 
-    padding: 7px 0px;
-    font-size: larger;
-    border-radius: 15px;
+.fa-brands{
+    font-size:larger;
 }
-#DOB-input-container{
-    display: flex;
-    justify-content: space-evenly;
-}
-#form-container form > *, #phone{
-    padding: 7px 0px;
-    font-size: larger;
-}
-#form-container form input, select{
-    margin-top: 3px;
-    padding: 5px 2px;
-    text-align: center;
-    background-color: white;
-    color: green;
-    border: none;
-    border-radius: 25px;
-}
-hr{
-    padding: 0!important;
-    margin: 20px 0px;
-}
-button[type="submit"]:disabled {
-    background-color: #cfcfcf;
-    color: #7a7a7a;
-    cursor: not-allowed;
-    opacity: 0.7;
-    box-shadow: none;
-}
-button[type="submit"]:disabled i {
-    color: #7a7a7a;
-}
-option[disabled]{
-    background-color: #b5c399;
-}
-input.error, select.error {
-    border-color: #c0392b;
-}
-.error-msg {
-    color: #c0392b;
-    font-size: 12px;
-    display: none;
-}
-.error-msg.active {
-    display: block;
+.social-links a {
+  font-size: 1.1rem;
 }
